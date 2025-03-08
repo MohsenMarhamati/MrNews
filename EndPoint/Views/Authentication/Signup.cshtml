@@ -1,0 +1,91 @@
+﻿@{
+    ViewData["Title"] = "ثبت نام";
+    Layout = "/Views/Shared/_LogLayout.cshtml";
+    string url = @ViewBag.url;
+}
+
+<div class="Login-to-account mt-4">
+    <div class="account-box-content">
+        <h4>ثبت نام در آقای خبر</h4>
+        <div class="form-account-title">
+            <label for="email-phone">نام نام خانوادگی</label>
+            <input type="text" class="number-email-input" id="FullName" onkeydown="CheckKeyPress(this,event)">
+        </div>
+        <div class="form-account-title">
+            <label for="email-phone">ایمیل</label>
+            <input type="email" class="number-email-input" id="Email" onkeydown="CheckKeyPress(this,event)">
+        </div>
+        <div class="form-account-title">
+            <label for="password">رمز عبور</label>
+            <input type="password" class="password-input" id="Password" onkeydown="CheckKeyPress(this,event)">
+        </div>
+        <div class="form-account-title">
+            <label for="password">تکرار رمز عبور</label>
+            <input type="password" class="password-input" id="RePassword" onkeydown="CheckKeyPress(this,event)">
+        </div>
+        <div class="form-row-account">
+            <a onclick="RegisterUser()" style="color:#fff;" class="btn btn-register btn-success">ثبت نام</a>
+            <a href=@url.Replace("\"", "") class="btn btn-register btn-danger">بازگشت</a>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+<script>
+
+      $('.ds').removeClass("active")
+      $('.register-ds').addClass("active")
+
+      function RegisterUser(){
+          debugger
+          var postData = {
+              'FullName': $("#FullName").val(),
+              'Email': $("#Email").val(),
+              'Password': $("#Password").val(),
+              'RePassword': $("#RePassword").val(),
+          };
+
+          var url='/Authentication/Signup';
+
+          $.post(url,postData,function(data){
+              if(data.isSuccess){
+                  swal.fire('موفق',data.message,'success').then(function isConfirm(){
+                      var u = (new URL(window.location.href)).searchParams.get("ReturnUrl");
+                      window.location.href = u.replaceAll("\"", "");
+                  });
+              }
+              else{
+                  swal.fire('هشدار',data.message,'warning');
+              }
+          });
+      }
+
+      function CheckKeyPress(el, e) {
+            if (e.keyCode == 13) {
+                debugger
+                switch( $(el).prop('id') ){
+                    case "FullName" : {
+                        $("#Email").focus();
+                        break;
+                    }
+                    case "Email" : {
+                        $("#Password").focus();
+                        break;
+                    }
+                    case "Password" : {
+                        $("#RePassword").focus();
+                        break;
+                    }
+                    case "RePassword" : {
+                        RegisterUser();
+                        break;
+                    }
+                }
+            }
+        }
+
+</script>
+}
+
+
+

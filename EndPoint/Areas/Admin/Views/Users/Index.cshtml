@@ -1,0 +1,384 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <!-- Zero configuration table -->
+        <section id="configuration">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title-wrap bar-success">
+                                <h4 class="card-title">لیست کاربران</h4>
+                            </div>
+                        </div>
+                        <div class="card-body collapse show">
+                            <div class="card-block card-dashboard">
+                                <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-6">
+                                            <div class="dataTables_length" id="">
+                                                <label>
+                                                    نمایش
+                                                    <select name="DataTables_Table_0_length" id="DataTables_Table_0_length" aria-controls="DataTables_Table_0" class="form-control form-control-sm" onchange="GetUsers(1);">
+                                                        <option class="items" value="5">5</option>
+                                                        <option class="items" value="10">10</option>
+                                                        <option class="items" value="25">25</option>
+                                                        <option class="items" value="50">50</option>
+                                                    </select> سطر
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 col-md-6">
+                                            <div id="DataTables_Table_0_filter" class="dataTables_filter">
+                                                <label>جستجو:<input id="SearchKye" class="form-control form-control-sm" type="text" placeholder="Search.."></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div style="width:100%; overflow:auto" class="col-sm-12">
+                                            <table class="table table-striped table-hover table-bordered zero-configuration dataTable" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
+
+                                                <thead>
+                                                    <tr>
+                                                        <th>تصویر کاربری</th>
+                                                        <th>نام و نام خانوادگی</th>
+                                                        <th>نقش کاربر</th>
+                                                        <th>آدرس ایمیل</th>
+                                                        <th>دکمه های کمکی</th>
+                                                    </tr>
+                                                </thead>
+
+                                                <tbody id="MyTabel"></tbody>
+
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-5">
+                                            <div class="dataTables_info" id="text_shit" role="status" aria-live="polite">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 col-md-7">
+                                            <div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+
+
+@section Modals{
+<!-- Modal Edit User -->
+<div class="modal fade" id="EditUserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">ویرایش کاربر</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="col-xl-12 col-lg-12 col-md-12 mb-1">
+                    <fieldset class="form-group">
+                        <label class="h4" for="">تصویر</label>
+                        <br />
+                        <img class="img-thumbnail col-12 rounded" id="PersonImage" onclick="$('#FileEdit').click()" style="text-align:center;max-height:400px;">
+                        <input type="file" class="form-control" id="FileEdit"  name="fileEdit" onchange="UploadImage()" hidden>
+                    </fieldset>
+                </div>
+                <div class="col-xl-12 col-lg-12 col-md-12 mb-1">
+                    <fieldset class="form-group">
+                        <input type="hidden" id="Edit_UserName" />
+                        <label for="basicInput">نام و نام خانوادگی</label>
+                        <input type="text" class="form-control" id="Edit_FullName">
+                    </fieldset>
+                </div>
+                <div class="col-xl-12 col-lg-12 col-md-12 mb-1">
+                    <fieldset class="form-group">
+                        <input type="hidden" id="Edit_UserEmail" />
+                        <label for="basicInput">ایمیل</label>
+                        <input type="text" class="form-control" id="Edit_Email">
+                    </fieldset>
+                </div>
+                <div class="col-xl-12 col-lg-12 col-md-12 mb-1">
+                    <fieldset class="form-group">
+                        <label for="basicSelect">نقش</label>
+                        <select class="form-control chosen-select" id="Edit_Role" name="Edit_Role" asp-items="@ViewBag.Roles" multiple>
+                            @*<option value="1">a</option>
+                                <option value="2">b</option>
+                                <option value="3">c</option>*@
+                        </select>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-secondary" data-dismiss="modal">بستن</a>
+                <a id="EditUserBtn" class="btn btn-primary">اعمال تغییرات</a>
+            </div>
+        </div>
+    </div>
+</div>
+}
+
+
+
+@section Scripts
+{
+<script>
+    var page = 1;
+    GetAllRoles().then(()=>{
+        GetUsers(page);
+    });
+
+
+    $(document).ready(function(){
+
+        $('.act').removeClass("active");
+        $('.users-index').addClass("active");
+
+        //multiple:
+        $(".chosen-select").chosen({
+            rtl:true,
+            width:"100%",
+        });
+
+       //shearch:
+       $("#SearchKye").on("keyup", function() {
+          var value = $(this).val().toLowerCase();
+          $("#MyTabel tr").filter(function() {
+              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+          });
+       });
+
+    });
+
+
+        /**************** functions ****************/
+
+
+        function setPagination(recordCount, itemsOnPage, currentPage){
+            var items = ( recordCount / $("#DataTables_Table_0_length").val() );
+            $("#DataTables_Table_0_paginate").pagination({
+                items: items,
+                itemsOnPage: 1,
+                currentPage: currentPage,
+                cssStyle: 'light-theme',
+                prevText: "قبلی",
+                nextText: "بعدی",
+                onPageClick : function(pageNumbner, event){
+                    page = pageNumbner;
+                    GetUsers(page);
+                },
+            });
+            var text = "<p> نمایش " + (itemsOnPage*(currentPage-1)+1)+" تا ";
+            text += (itemsOnPage*currentPage) > recordCount ? recordCount : (itemsOnPage*currentPage);
+            text += " از "+recordCount+"سطر <p>";
+            $("#text_shit").html(text);
+        }
+
+
+        function GetUsers(p){
+            var url='/Admin/Users/GetUsers';
+            var datapost ={
+                page : p,
+                pagesize : $("#DataTables_Table_0_length").val(),
+            }
+            $.post(url,datapost,function(result){
+                $('#DataTables_Table_0 tbody tr').remove();
+                setPagination(result.recordCount,datapost.pagesize,p);
+                for(var i=0;i<result.usersList.length;i++)
+                {
+                    var tr="";
+                    tr+='<tr>';
+                    tr+=`<td>`;
+                    if(result.usersList[i].fileDocumentId != null) { tr+=`<div style="height: 100px; width: 100px;"><a href="/FileDacuments/GenerateFile?fileDocumentId=${result.usersList[i].fileDocumentId}" target="_blank"><img src="/FileDacuments/GenerateFile?fileDocumentId=${result.usersList[i].fileDocumentId}" class="img-thumbnail rounded-circle mx-auto" style="text-align: center;height:100%;width:100%"></a></div>`; }
+                    else { tr+=`<div style="height: 100px; width: 100px;"><img src="/Express_New/images/no-image.png" class="img-thumbnail rounded-circle mx-auto" style="text-align: center;height:100%;width:100%"></div>`; }
+                    tr+=`</td>`;
+                    tr+='<td>'+result.usersList[i].fullName+'</td>';
+                    tr+='<td>';
+                    for(var j=0; j < result.usersList[i].userRoles.length; j++){
+                        tr += result.usersList[i].userRoles[j].title + ' - ';
+                    }
+                    tr += '</td>';
+                    tr+='<td>'+result.usersList[i].email+'</td>';
+                    tr+='<td>';
+                    tr+=`<button onclick="ShowModelEditUser(${result.usersList[i].id})" id="Mod_Edit" class="btn btn-info ml-2">ویرایش</button>`;
+                    tr+=`<button onclick="DeleteUser(${result.usersList[i].id})" class="btn btn-danger ml-2">حذف</button>`;
+                    if (result.usersList[i].isActive) { tr+=`<button id="IsActive" onclick="UserSatusChange(${result.usersList[i].id})" class="btn btn-warning ml-2">غیر فعال کردن کاربر</button>`; }
+                    else { tr+=`<button id="IsActive" onclick="UserSatusChange(${result.usersList[i].id})" class="btn btn-success ml-2">فعال کردن کاربر</button>`; }
+                    tr+='</td>';
+                    tr+='</tr>';
+                    $('#DataTables_Table_0 tbody').append(tr);
+                }
+            });
+        }
+
+
+        function DeleteUser(id){
+            swal.fire({
+                titel: 'حذف کاربر',
+                text: 'آیا می خواهید حذف کاربر را انجام دهید؟',
+                icon: 'info',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'بله حذف کاربر انجام شود',
+                cancelButtonText: 'خیر'
+            })
+            .then((result) => {
+                if(result.value) {
+                    var url='/Admin/Users/DeleteUser';
+                    $.post(url,{id:id},function(data){
+                        if(data.isSuccess){
+                            swal.fire('موفق',data.message,'success');
+                            GetUsers(page);
+                        }
+                        else{
+                            swal.fire('هشدار',data.message,'warning');
+                        }
+                    });
+                 }
+            });
+        }
+
+
+        function UserSatusChange(id){
+            var taxt = $("#IsActive").val();
+            swal.fire({
+                titel: 'حذف کاربر',
+                text: `آیا از ${taxt} اطمینان دارید؟`,
+                icon: 'info',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'بله انجام شود',
+                cancelButtonText: 'خیر'
+            })
+            .then((result) => {
+                if(result.value) {
+                    var url='/Admin/Users/UserSatusChange';
+                    $.post(url,{id:id},function(data){
+                        if(data.isSuccess){
+                            swal.fire('موفق',data.message,'success');
+                            GetUsers(page);
+                        }
+                        else{
+                            swal.fire('هشدار',data.message,'warning');
+                        }
+                    });
+                }
+            });
+        }
+
+
+        function GetAllRoles(){
+            return new Promise((resolve)=>{
+                var url = "/Admin/Users/GetRoles"
+                $.post(url,function(result){
+                    var option = "";
+                    for(var i=0;i<result.data.length;i++)
+                    {
+                        option += `<option value="${result.data[i].id}">${result.data[i].title}</option>`;
+                    }
+                    $('#Edit_Role').html(option).trigger("chosen:updated");
+                    resolve();
+                });
+            });
+        }
+
+
+        function ShowModelEditUser(id){
+            var url='/Admin/Users/FindUser';
+            $.post(url,{id:id},function(result){
+                if(result.isSuccess){
+                    var roles = [];
+                    for(var i = 0 ; i < result.data.userRoles.length; i++){
+                        roles.push(result.data.userRoles[i].id);
+                    }
+                    $('#PersonImage').attr('src',`/FileDacuments/GenerateFile?fileDocumentId=${result.data.fileDocumentId}`);
+                    $('#Edit_FullName').val(`${result.data.fullName}`);
+                    $('#Edit_Email').val(`${result.data.email}`);
+                    $("#Edit_Role").val(roles).trigger('chosen:updated');
+                    $('#EditUserModal').modal('show');
+                    $('#EditUserBtn').on('click', function(){EditUser(id);});
+                }
+                else{
+                    swal.fire('هشدار',result.message,'warning');
+                }
+            });
+        }
+
+
+        function EditUser(id){
+            swal.fire({
+                titel: 'ویرایش کاربر',
+                text: `آیا از ویرایش کاربر اطمینان دارید؟`,
+                icon: 'info',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'بله انجام شود',
+                cancelButtonText: 'خیر'
+            })
+            .then((result) => {
+                if(result.value) {
+
+                    let fileUpload = $("#FileEdit").get(0);
+                    let files = ((fileUpload) ? fileUpload.files : null);
+                    let fileToBeUoload = ((files) ? files[0] : null);
+                    let inputmodel = new FormData();
+
+                    inputmodel.append("File", fileToBeUoload);
+                    inputmodel.append("FullName", $("#Edit_FullName").val());
+                    inputmodel.append("Id", id);
+                    inputmodel.append("Email", $("#Edit_Email").val());
+                    inputmodel.append("RolesJson", JSON.stringify($("#Edit_Role").val()));
+                    
+                    $.ajax({
+                    dataType:'json',
+                    type:'POST',
+                    url:'Users/EditUser',
+                    data:inputmodel,
+                    processData:false,
+                    contentType:false,
+                    success:function(result){
+                        if(result.isSuccess){
+                            swal.fire('موفق',result.message,'success')
+                            .then(function (isConfirm){
+                                GetUsers(page);
+                                $('#EditUserModal').modal('hide');
+                            });
+                        }
+                        else{
+                            swal.fire('هشدار',result.message,'warning');
+                        }
+                    },
+                    erroe:function(request, status, error){
+                        alert('error');
+                    }
+                });
+                }
+            });
+        }
+
+        function UploadImage(){
+           $('#PersonImage').attr('src', URL.createObjectURL($('#FileEdit').get(0).files[0]));
+        }   
+</script>
+}
+
+

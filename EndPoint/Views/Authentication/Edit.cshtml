@@ -1,0 +1,188 @@
+﻿@{
+    Layout = null;
+    var url = ViewBag.url;
+    ViewData["Title"] = "ویرایش حساب کاربری";
+}
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> @ViewData["Title"] </title>
+    <!-- font---------------------------------------->
+    <link rel="stylesheet" href="~/SiteTemplate/assets/css/vendor/font-awesome.min.css">
+    <link rel="stylesheet" href="~/SiteTemplate/assets/css/vendor/materialdesignicons.css">
+    <!-- plugin-------------------------------------->
+    <link rel="stylesheet" href="~/SiteTemplate/assets/css/vendor/bootstrap.css">
+    <link rel="stylesheet" href="~/SiteTemplate/assets/css/vendor/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/SiteTemplate/assets/css/vendor/noUISlider.min.css">
+    <!-- main-style---------------------------------->
+    <link rel="stylesheet" href="~/SiteTemplate/assets/css/main.css">
+
+
+    <!-- file js---------------------------------------------------->
+    <script src="~/SiteTemplate/assets/js/vendor/jquery-3.2.1.min.js"></script>
+    <script src="~/SiteTemplate/assets/js/vendor/bootstrap.js"></script>
+    <!-- plugin----------------------------------------------------->
+    <script src="~/SiteTemplate/assets/js/vendor/owl.carousel.min.js"></script>
+    <script src="~/SiteTemplate/assets/js/vendor/jquery.countdown.js"></script>
+    <script src="~/SiteTemplate/assets/js/vendor/ResizeSensor.min.js"></script>
+    <script src="~/SiteTemplate/assets/js/vendor/theia-sticky-sidebar.min.js"></script>
+    <script src="~/SiteTemplate/assets/js/vendor/wNumb.js"></script>
+    <script src="~/SiteTemplate/assets/js/vendor/nouislider.min.js"></script>
+    <!-- main js---------------------------------------------------->
+    <script src="~/SiteTemplate/assets/js/main.js"></script>
+    <link href="~/Sweetalert2/sweetalert2.min.css" rel="stylesheet">
+    <script src="~/Sweetalert2/sweetalert2.min.js"></script>
+</head>
+<body>
+
+    <!-- login----------------------------------->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg">
+                <section class="page-account-box">
+                    <div class="col-lg-6 col-md-6 col-xs-12 mx-auto">
+                        <div class="ds-userlogin text-center">
+                            <a href="/"><img style="width:300px;height:150px;" src="/Express_New/images/logo_New.png" alt=""></a>
+                            <div class="account-box">
+                                <div class="Login-to-account mt-4">
+                                    <div class="account-box-content">
+                                        <h4>ویرایش حساب کاربری در آقای خبر</h4>
+                                        <div class="form-account-title">
+                                            <label for="email-phone">تصویر</label>
+                                            <br />
+                                            @{
+                                                if (@Context.Session.GetString("UserImage") != null)
+                                                {
+                                                    <div onclick="$('#Edit_Image').click()" style="text-align:center;height:100%;width:100%"><img id="PersonImage"  src="/FileDacuments/GenerateFile?fileDocumentId=@Context.Session.GetString("UserImage")" class="img-thumbnail rounded" style="text-align:center;height:100%;max-height:450px;width:100%;max-width:450px;"></div>
+                                                }
+                                                else
+                                                {
+                                                    <div onclick="$('#Edit_Image').click()" style="text-align:center;height:100%;width:100%"><img id="PersonImage" src="/Express_New/images/no-image.png" class="img-thumbnail rounded" style="text-align:center;height:100%;width:100%"></div>
+                                                }
+                                            }
+                                            <input type="file" class="form-control" id="Edit_Image" onchange="UploadImage()" hidden>
+                                        </div>
+                                        <div class="form-account-title">
+                                            <label for="email-phone">نام نام خانوادگی</label>
+                                            <input type="text" class="number-email-input" id="Edit_FullName" value="@Context.Session.GetString("UserName")">
+                                        </div>
+                                        <div class="form-account-title">
+                                            <label for="email-phone">ایمیل</label>
+                                            <input type="email" class="number-email-input" id="Edit_Email" value="@Context.Session.GetString("UserEmail")">
+                                        </div>
+                                        <div class="form-account-title">
+                                            <label for="password">رمز عبور فعلی را وارد کنید(الزامی)</label>
+                                            <input type="password" class="password-input" id="Password">
+                                        </div>
+                                        <div class="form-account-title">
+                                            <label for="password">رمز عبور جدید را وارد کنید</label>
+                                            <input type="password" class="password-input" id="Edit_Password">
+                                        </div>
+                                        <div class="form-account-title">
+                                            <label for="password">تکرار رمز عبور جدید را وارد کنید</label>
+                                            <input type="password" class="password-input" id="Edit_RePassword">
+                                        </div>
+                                        <div class="form-row-account">
+                                            <a onclick="EditUser()" style="color:#fff;" class="btn btn-register btn-info">ویرایش</a>
+                                            <a href=@url class="btn btn-register btn-danger">بازگشت</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <!-- login----------------------------------->
+    <!-- scroll_Progress------------------------->
+    <div class="progress-wrap">
+        <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+        </svg>
+    </div>
+
+</body>
+<!-- file js---------------------------------------------------->
+<script src="~/SiteTemplate/assets/js/vendor/jquery-3.2.1.min.js"></script>
+<script src="~/SiteTemplate/assets/js/vendor/bootstrap.js"></script>
+<!-- plugin----------------------------------------------------->
+<script src="~/SiteTemplate/assets/js/vendor/owl.carousel.min.js"></script>
+<script src="~/SiteTemplate/assets/js/vendor/jquery.countdown.js"></script>
+<script src="~/SiteTemplate/assets/js/vendor/ResizeSensor.min.js"></script>
+<script src="~/SiteTemplate/assets/js/vendor/theia-sticky-sidebar.min.js"></script>
+<script src="~/SiteTemplate/assets/js/vendor/wNumb.js"></script>
+<script src="~/SiteTemplate/assets/js/vendor/nouislider.min.js"></script>
+<!-- main js---------------------------------------------------->
+<script src="~/SiteTemplate/assets/js/main.js"></script>
+
+
+<link href="~/Sweetalert2/sweetalert2.min.css" rel="stylesheet" />
+<script src="~/Sweetalert2/sweetalert2.min.js"></script>
+
+
+<!-- scroll_Progress------------------------->
+@*@section Scripts*@
+<script>
+    $('.ds').removeClass("active");
+    $('.register-ds').addClass("active");
+
+    function EditUser(){
+        swal.fire({
+            titel: 'ویرایش حساب کاربری',
+            text: 'آیا می خواهید ویرایش انجام شود؟',
+            icon: 'info',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'بله انجام شود',
+            cancelButtonText: 'خیر',
+        }).then((result) => {
+
+            if(result.value) {
+
+                let fileUpload = $("#Edit_Image").get(0);
+                let files = ((fileUpload) ? fileUpload.files : null);
+                let fileToBeUoload = ((files) ? files[0] : null);
+                let inputmodel = new FormData();
+
+                inputmodel.append("EditFile", fileToBeUoload);
+                inputmodel.append("EditFullName", $("#Edit_FullName").val());
+                inputmodel.append("EditEmail", $("#Edit_Email").val());
+                inputmodel.append("Password", $("#Password").val());
+                inputmodel.append("EditPassword", $("#Edit_Password").val());
+                inputmodel.append("EditRePassword", $("#Edit_RePassword").val());
+
+                $.ajax({
+                    dataType:'json',
+                    type:'POST',
+                    url:'Edit',
+                    data:inputmodel,
+                    processData:false,
+                    contentType:false,
+                    success:function(data){
+                        if(data.isSuccess){
+                            window.location.href = '@url.Replace("\"", "")';
+                        }
+                        else{
+                            swal.fire('هشدار',data.message,'warning');
+                        }
+                    },
+                    erroe:function(request, status, error){
+                        alert('error');
+                    },
+                });
+
+            }
+        });
+    }
+
+    function UploadImage(){
+        $('#PersonImage').attr('src', URL.createObjectURL($('#Edit_Image').get(0).files[0]));
+    }
+</script>
+</html>

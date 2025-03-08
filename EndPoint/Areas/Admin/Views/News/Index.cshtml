@@ -1,0 +1,399 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <!-- Zero configuration table -->
+        <section id="configuration">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title-wrap bar-success">
+                                <h4 class="card-title">لیست کاربران</h4>
+                            </div>
+                        </div>
+                        <div class="card-body collapse show">
+                            <div class="card-block card-dashboard">
+                                <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <div class="dataTables_length" id="">
+                                                <label>
+                                                    نمایش
+                                                    <select name="DataTables_Table_0_length" id="DataTables_Table_0_length" aria-controls="DataTables_Table_0" class="form-control form-control-sm" onchange="GetNews(1);">
+                                                        <option class="items" value="5">5</option>
+                                                        <option class="items" value="10">10</option>
+                                                        <option class="items" value="25">25</option>
+                                                        <option class="items" value="50">50</option>
+                                                    </select> سطر
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div id="DataTables_Table_0_filter" class="dataTables_filter">
+                                                <label>جستجو:<input id="SearchKye" class="form-control form-control-sm" type="text" placeholder="Search.."></label>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div id="DataTables_Table_0_filter" class="dataTables_filter">
+                                                <label>
+                                                    وضعیت خبر:
+                                                    <select name="Filter" id="Filter" aria-controls="DataTables_Table_0" placeholder="همه" class="form-control form-control-sm" onchange="GetNews(1);">
+                                                        <option class="items">همه</option>
+                                                        <option class="items" value="1">تایید شده</option>
+                                                        <option class="items" value="2">برسی نشده</option>
+                                                        <option class="items" value="3">رد شده</option>
+                                                    </select>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div style="width:100%; overflow:auto" class="col-sm-12">
+                                            <table class="table table-striped table-hover table-bordered" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
+
+                                                <thead>
+                                                    <tr>
+                                                        <th>نمایه خبر</th>
+                                                        <th>عنوان خبر</th>
+                                                        <th>گروه خبری</th>
+                                                        <th>زمان ثبت خبر</th>
+                                                        <th>وضعیت خبر</th>
+                                                        <th>نام خبرنگار</th>
+                                                        <th>آدرس ایمیل خبرنگار</th>
+                                                        <th>دکمه های کمکی</th>
+                                                    </tr>
+                                                </thead>
+
+                                                <tbody id="MyTabel"></tbody>
+
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-5">
+                                            <div class="dataTables_info" id="text_shit" role="status" aria-live="polite">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 col-md-7">
+                                            <div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+
+
+@section Modals{
+<!-- Modal Non Active -->
+<div class="modal fade" id="NonActiveModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">رد خبر</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="col-xl-12 col-lg-12 col-md-12 mb-1">
+                <fieldset class="form-group">
+                    <label for="basicInput">دلایل رد کردن خبر را ذکر فرمایید</label>
+                    <textarea rows="10" class="form-control" id="Reasons"></textarea>
+                </fieldset>
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-secondary" data-dismiss="modal">بستن</a>
+                <a id="NonActiveBtn" class="btn btn-primary">اعمال تغییرات</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<!-- Modal News View -->
+<div class="modal fade" id="NewsView" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document" style="max-width:80%">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <div class="col-xl-6 col-lg-6 col-md-6 mb-1">
+                    <h1 id="modal_CategoryTitle"></h1>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 mb-1">
+                    <h1 class="modal-title h2" style="padding:1%;" id="modal_Title"></h1>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xl-8 col-lg-8 col-md-8 mb-1">
+                    <p class="h3" id="modal_Headline"></p>
+                </div>
+                <div style="max-height:350px" class="col-xl-4 col-lg-4 col-md-4 mb-1">
+                    <img alt="خبر دارای تصویر نماییه نمی باشد" id="modal_DefaultImage" class="img-thumbnail rounded mx-auto" style="text-align:center;height:100%;width:100%;object-fit:cover;" />
+                </div>
+            </div>
+
+            <div class="col-xl-12 col-lg-12 col-md-12 mb-1">
+                <p class="h4" id="modal_Body"></p>
+            </div>
+
+            <div class="col-xl-12 col-lg-12 col-md-12 mb-1">
+                <p class="h3" id="modal_ReporterName"></p>
+            </div>
+
+            <div class="col-xl-12 col-lg-12 col-md-12 mb-1">
+                <p class="h3" id="modal_InsertTime"></p>
+            </div>
+            <div class="col-xl-12 col-lg-12 col-md-12 mb-1">
+                <div class="form-group">
+                    <div id="modal_WiewNews_FileDocuments" class="row" style="margin: 1%;"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-primary" id="Shutdown" onclick="$('#NewsView').modal('hide');">بستن</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+}
+
+
+
+@section Scripts
+{
+<script>
+    var page = 1;
+    GetNews(page);
+
+    $(document).ready(function(){
+
+        $('.act').removeClass("active");
+        $('.news-index').addClass("active");
+
+        //multiple:
+        $(".chosen-select").chosen({
+            rtl:true,
+            width:"100%",
+        });
+
+       //shearch:
+       $("#SearchKye").on("keyup", function() {
+          var value = $(this).val().toLowerCase();
+          $("#MyTabel tr").filter(function() {
+              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+          });
+       });
+
+    });
+
+
+        /**************** functions ****************/
+
+        function setPagination(recordCount, itemsOnPage, currentPage){
+            var items = ( recordCount / $("#DataTables_Table_0_length").val() );
+            $("#DataTables_Table_0_paginate").pagination({
+                items: items,
+                itemsOnPage: 1,
+                currentPage: currentPage,
+                cssStyle: 'light-theme',
+                prevText: "قبلی",
+                nextText: "بعدی",
+                onPageClick : function(pageNumbner, event){
+                    page=pageNumbner;
+                    GetNews(page);
+                },
+            });
+            var text = "<p> نمایش " + (itemsOnPage*(currentPage-1)+1)+" تا ";
+            text += (itemsOnPage*currentPage) > recordCount ? recordCount : (itemsOnPage*currentPage);
+            text += " از "+recordCount+"سطر <p>";
+            $("#text_shit").html(text);
+        }
+
+
+        function GetNews(p){
+            var url='GetNews';
+            var datapost ={
+                Filter : $("#Filter").val(),
+                page : p,
+                pagesize : $("#DataTables_Table_0_length").val(),
+            }
+            $.post(url,datapost,function(result){
+                $('#DataTables_Table_0 tbody tr').remove();
+                setPagination(result.recordCount,datapost.pagesize,p );
+                for(var i=0;i<result.data.length;i++)
+                {
+                    var tr="";
+                    tr+='<tr>';
+                    tr+='<td>';
+                    if(result.data[i].defaultImageId != null) { tr+=`<div style="height: 100px; width: 100px;"><a href="/FileDacuments/GenerateFile?fileDocumentId=${result.data[i].defaultImageId}" target="_blank"><img src="/FileDacuments/GenerateFile?fileDocumentId=${result.data[i].defaultImageId}" class="img-thumbnail rounded-circle mx-auto" style="text-align: center;height:100%;width:100%"></a></div>`; }
+                    else {tr+=`<div style="height: 100px; width: 100px;"><img src="/Express_New/images/no-image.png" class="img-thumbnail rounded-circle mx-auto" style="text-align: center;height:100%;width:100%"></div>`; }
+                    tr+='</td>';
+                    tr+=`<td>${result.data[i].title}</td>`;
+                    tr+=`<td>${result.data[i].categoryTitle}</td>`;
+                    tr+=`<td>${result.data[i].insertTime}</td>`;
+                    if(result.data[i].isRemove){
+                        tr+='<td class="text-danger">حذف شده</td>';
+                    }
+                    else if(result.data[i].isActive == null){
+                        if(result.data[i].reasons != null){
+                            tr+='<td class="text-primary">اصلاح شده</td>';
+                        }
+                        else{
+                        tr+='<td class="text-primary">برسی نشده</td>';
+                        }
+                    }
+
+                    else if(result.data[i].isActive){
+                        tr+='<td class="text-success">تایید شده</td>';
+                    }
+                    else{
+                        tr+='<td class="text-warning">رد شده</td>';
+                    }
+                    tr+='<td>'+ result.data[i].reporterName +'</td>';
+                    tr+='<td>'+ result.data[i].reporterEmail +'</td>';
+                    tr+='<td>';
+                    if(!result.data[i].isRemove){
+                        if(result.data[i].isActive != true)
+                        {
+                            tr+=`<button id="IsActive" onclick="SatusChange(${result.data[i].id},true)" class="btn btn-success ml-2">فعال کردن خبر</button>`;
+                        }
+                        if(result.data[i].isActive != false)
+                        {
+                            tr+=`<button id="IsActive" onclick="ShowSatusChangeModal(${result.data[i].id})" class="btn btn-warning ml-2">رد خبر</button>`;
+                        }
+                        tr+=`<button onclick="Delete(${result.data[i].id})" class="btn btn-danger ml-2">حذف خبر</button>`;
+                    }
+                    tr+=`<button onclick="ShowReadModal(${result.data[i].id})" class="btn btn-primary ml-2">مشاهده خبر</button>`;
+                    tr+='</td>';
+                    tr+='</tr>';
+                    $('#DataTables_Table_0 tbody').append(tr);
+                }
+            });
+        }
+
+
+        function ShowReadModal(id){
+            var url='/Admin/News/ReadNews';
+            $.post(url,{id:id},function(result){
+                if(result.isSuccess){
+                    $('#modal_DefaultImage').attr('src',`/FileDacuments/GenerateFile?fileDocumentId=${result.data.defaultImageId}`);
+                    $('#modal_Title').text(`${result.data.title}`);
+                    $('#modal_Headline').text(`${result.data.headline}`);
+                    $('#modal_Body').html(`${result.data.body.replaceAll('\n', '<br>')}`);
+                    $('#modal_InsertTime').text(`${result.data.updateTime ?? result.data.insertTime}`);
+                    $('#modal_CategoryTitle').text(`${result.data.categoryTitle}`);
+                    $('#modal_ReporterName').text(`${result.data.reporterName}`);
+                    $('#NewsView').modal('show');
+                    $('#modal_WiewNews_FileDocuments').empty();
+                    for(var i=0;i<result.data.imagesId.length;i++)
+                    {
+                        if(result.data.defaultImageId != result.data.imagesId[i])
+                        ReadGetImage(result.data.imagesId[i]);
+                    }
+                }
+                else{
+                    swal.fire('هشدار',result.message,'warning');
+                }
+            });
+        }
+
+
+        function ReadGetImage(id){
+            var img = "";
+            img += `<div id="${id}" style="width:210px; height:210px; float:left; position:relative; margin-left:1%">
+                <img onclick="/FileDacuments/GenerateFile?fileDocumentId=${id}" target="_blank"src="/FileDacuments/GenerateFile?fileDocumentId=${id}"
+            class="img-thumbnail rounded mx-auto"style="text-align: center;height:100%;width:100%"></div>`;
+            $('#modal_WiewNews_FileDocuments').append(img);
+        }
+
+
+        function Delete(id){
+            swal.fire({
+                titel: 'حذف کاربر',
+                text: 'آیا می خواهید حذف خبر را انجام دهید؟',
+                icon: 'info',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'بله حذف خبر انجام شود',
+                cancelButtonText: 'خیر'
+            })
+            .then((result) => {
+                if(result.value) {
+
+                    var url='/Admin/News/Delete';
+                    $.post(url,{id:id},function(data){
+                        if(data.isSuccess){
+                            swal.fire('موفق',data.message,'success');
+                            GetNews(page);
+                        }
+                        else{
+                            swal.fire('هشدار',data.message,'warning');
+                        }
+                    });
+                 }
+            });
+        }
+
+
+        function SatusChange(id,IsActive){
+            var taxt = IsActive == true ? "فعال" : "رد";
+            swal.fire({
+                titel: 'تغبر وضعیت خبر',
+                text: `آیا از ${taxt} کردن خبر اطمینان دارید؟`,
+                icon: 'info',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'بله انجام شود',
+                cancelButtonText: 'خیر'
+            })
+            .then((result) => {
+                if(result.value) {
+                    var podtdata = {
+                        id : id,
+                        reasons : $("#Reasons").val(),
+                        isActive : IsActive,
+                    }
+                    var url='/Admin/News/SatusChange';
+                    $.post(url,podtdata,function(data){
+                        if(data.isSuccess){
+                            swal.fire('موفق',data.message,'success').
+                            then(function (isConfirm){
+                                GetNews(page);
+                            });
+                            $("#Reasons").val('');
+                            $('#NonActiveModel').modal('hide');
+                        }
+                        else{
+                            swal.fire('هشدار',data.message,'warning');
+                        }
+                    });
+                    $("#Reasons").val('');
+                }
+            });
+        }
+
+
+        function ShowSatusChangeModal(id){
+            $('#NonActiveModel').modal('show');
+            $('#NonActiveBtn').on( 'click', function(){ SatusChange(id,false); } );
+        }
+</script>
+}
