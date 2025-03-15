@@ -10,7 +10,7 @@ namespace EndPoint.Controllers
     public class AuthenticationController : Controller
     {
         private readonly IUsersService _UsersService;
-        public AuthenticationController(IUsersService UsersService)
+        public AuthenticationController(IUsersService UsersService) 
         {
             _UsersService = UsersService;
         }
