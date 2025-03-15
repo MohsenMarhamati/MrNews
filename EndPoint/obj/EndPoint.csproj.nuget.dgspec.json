@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\20\\Desktop\\MrNews\\EndPoint\\EndPoint.csproj": {}
+    "C:\\Users\\Hadis\\Desktop\\MrNews\\MrNews\\EndPoint\\EndPoint.csproj": {}
   },
   "projects": {
-    "C:\\Users\\20\\Desktop\\MrNews\\EndPoint\\EndPoint.csproj": {
+    "C:\\Users\\Hadis\\Desktop\\MrNews\\MrNews\\EndPoint\\EndPoint.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\20\\Desktop\\MrNews\\EndPoint\\EndPoint.csproj",
+        "projectUniqueName": "C:\\Users\\Hadis\\Desktop\\MrNews\\MrNews\\EndPoint\\EndPoint.csproj",
         "projectName": "EndPoint",
-        "projectPath": "C:\\Users\\20\\Desktop\\MrNews\\EndPoint\\EndPoint.csproj",
-        "packagesPath": "C:\\Users\\20\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\20\\Desktop\\MrNews\\EndPoint\\obj\\",
+        "projectPath": "C:\\Users\\Hadis\\Desktop\\MrNews\\MrNews\\EndPoint\\EndPoint.csproj",
+        "packagesPath": "C:\\Users\\Hadis\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Hadis\\Desktop\\MrNews\\MrNews\\EndPoint\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\20\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Hadis\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -32,14 +28,14 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\20\\Desktop\\MrNews\\NewsWebSite.Application\\NewsWebSite.Application.csproj": {
-                "projectPath": "C:\\Users\\20\\Desktop\\MrNews\\NewsWebSite.Application\\NewsWebSite.Application.csproj"
+              "C:\\Users\\Hadis\\Desktop\\MrNews\\MrNews\\NewsWebSite.Application\\NewsWebSite.Application.csproj": {
+                "projectPath": "C:\\Users\\Hadis\\Desktop\\MrNews\\MrNews\\NewsWebSite.Application\\NewsWebSite.Application.csproj"
               },
-              "C:\\Users\\20\\Desktop\\MrNews\\NewsWebSite.Common\\NewsWebSite.Common.csproj": {
-                "projectPath": "C:\\Users\\20\\Desktop\\MrNews\\NewsWebSite.Common\\NewsWebSite.Common.csproj"
+              "C:\\Users\\Hadis\\Desktop\\MrNews\\MrNews\\NewsWebSite.Common\\NewsWebSite.Common.csproj": {
+                "projectPath": "C:\\Users\\Hadis\\Desktop\\MrNews\\MrNews\\NewsWebSite.Common\\NewsWebSite.Common.csproj"
               },
-              "C:\\Users\\20\\Desktop\\MrNews\\NewsWebSite.Persistence\\NewsWebSite.Persistence.csproj": {
-                "projectPath": "C:\\Users\\20\\Desktop\\MrNews\\NewsWebSite.Persistence\\NewsWebSite.Persistence.csproj"
+              "C:\\Users\\Hadis\\Desktop\\MrNews\\MrNews\\NewsWebSite.Persistence\\NewsWebSite.Persistence.csproj": {
+                "projectPath": "C:\\Users\\Hadis\\Desktop\\MrNews\\MrNews\\NewsWebSite.Persistence\\NewsWebSite.Persistence.csproj"
               }
             }
           }
@@ -48,6 +44,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -97,7 +98,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -109,25 +111,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.304\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\20\\Desktop\\MrNews\\NewsWebSite.Application\\NewsWebSite.Application.csproj": {
+    "C:\\Users\\Hadis\\Desktop\\MrNews\\MrNews\\NewsWebSite.Application\\NewsWebSite.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\20\\Desktop\\MrNews\\NewsWebSite.Application\\NewsWebSite.Application.csproj",
+        "projectUniqueName": "C:\\Users\\Hadis\\Desktop\\MrNews\\MrNews\\NewsWebSite.Application\\NewsWebSite.Application.csproj",
         "projectName": "NewsWebSite.Application",
-        "projectPath": "C:\\Users\\20\\Desktop\\MrNews\\NewsWebSite.Application\\NewsWebSite.Application.csproj",
-        "packagesPath": "C:\\Users\\20\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\20\\Desktop\\MrNews\\NewsWebSite.Application\\obj\\",
+        "projectPath": "C:\\Users\\Hadis\\Desktop\\MrNews\\MrNews\\NewsWebSite.Application\\NewsWebSite.Application.csproj",
+        "packagesPath": "C:\\Users\\Hadis\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Hadis\\Desktop\\MrNews\\MrNews\\NewsWebSite.Application\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\20\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Hadis\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -141,11 +139,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\20\\Desktop\\MrNews\\NewsWebSite.Common\\NewsWebSite.Common.csproj": {
-                "projectPath": "C:\\Users\\20\\Desktop\\MrNews\\NewsWebSite.Common\\NewsWebSite.Common.csproj"
+              "C:\\Users\\Hadis\\Desktop\\MrNews\\MrNews\\NewsWebSite.Common\\NewsWebSite.Common.csproj": {
+                "projectPath": "C:\\Users\\Hadis\\Desktop\\MrNews\\MrNews\\NewsWebSite.Common\\NewsWebSite.Common.csproj"
               },
-              "C:\\Users\\20\\Desktop\\MrNews\\NewsWebSite.Domain\\NewsWebSite.Domain.csproj": {
-                "projectPath": "C:\\Users\\20\\Desktop\\MrNews\\NewsWebSite.Domain\\NewsWebSite.Domain.csproj"
+              "C:\\Users\\Hadis\\Desktop\\MrNews\\MrNews\\NewsWebSite.Domain\\NewsWebSite.Domain.csproj": {
+                "projectPath": "C:\\Users\\Hadis\\Desktop\\MrNews\\MrNews\\NewsWebSite.Domain\\NewsWebSite.Domain.csproj"
               }
             }
           }
@@ -154,6 +152,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -203,7 +206,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -212,25 +216,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.304\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\20\\Desktop\\MrNews\\NewsWebSite.Common\\NewsWebSite.Common.csproj": {
+    "C:\\Users\\Hadis\\Desktop\\MrNews\\MrNews\\NewsWebSite.Common\\NewsWebSite.Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\20\\Desktop\\MrNews\\NewsWebSite.Common\\NewsWebSite.Common.csproj",
+        "projectUniqueName": "C:\\Users\\Hadis\\Desktop\\MrNews\\MrNews\\NewsWebSite.Common\\NewsWebSite.Common.csproj",
         "projectName": "NewsWebSite.Common",
-        "projectPath": "C:\\Users\\20\\Desktop\\MrNews\\NewsWebSite.Common\\NewsWebSite.Common.csproj",
-        "packagesPath": "C:\\Users\\20\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\20\\Desktop\\MrNews\\NewsWebSite.Common\\obj\\",
+        "projectPath": "C:\\Users\\Hadis\\Desktop\\MrNews\\MrNews\\NewsWebSite.Common\\NewsWebSite.Common.csproj",
+        "packagesPath": "C:\\Users\\Hadis\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Hadis\\Desktop\\MrNews\\MrNews\\NewsWebSite.Common\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\20\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Hadis\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -250,6 +250,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -299,7 +304,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -308,25 +314,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.304\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\20\\Desktop\\MrNews\\NewsWebSite.Domain\\NewsWebSite.Domain.csproj": {
+    "C:\\Users\\Hadis\\Desktop\\MrNews\\MrNews\\NewsWebSite.Domain\\NewsWebSite.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\20\\Desktop\\MrNews\\NewsWebSite.Domain\\NewsWebSite.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Hadis\\Desktop\\MrNews\\MrNews\\NewsWebSite.Domain\\NewsWebSite.Domain.csproj",
         "projectName": "NewsWebSite.Domain",
-        "projectPath": "C:\\Users\\20\\Desktop\\MrNews\\NewsWebSite.Domain\\NewsWebSite.Domain.csproj",
-        "packagesPath": "C:\\Users\\20\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\20\\Desktop\\MrNews\\NewsWebSite.Domain\\obj\\",
+        "projectPath": "C:\\Users\\Hadis\\Desktop\\MrNews\\MrNews\\NewsWebSite.Domain\\NewsWebSite.Domain.csproj",
+        "packagesPath": "C:\\Users\\Hadis\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Hadis\\Desktop\\MrNews\\MrNews\\NewsWebSite.Domain\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\20\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Hadis\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -346,6 +348,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -395,7 +402,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -404,25 +412,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.304\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\20\\Desktop\\MrNews\\NewsWebSite.Persistence\\NewsWebSite.Persistence.csproj": {
+    "C:\\Users\\Hadis\\Desktop\\MrNews\\MrNews\\NewsWebSite.Persistence\\NewsWebSite.Persistence.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\20\\Desktop\\MrNews\\NewsWebSite.Persistence\\NewsWebSite.Persistence.csproj",
+        "projectUniqueName": "C:\\Users\\Hadis\\Desktop\\MrNews\\MrNews\\NewsWebSite.Persistence\\NewsWebSite.Persistence.csproj",
         "projectName": "NewsWebSite.Persistence",
-        "projectPath": "C:\\Users\\20\\Desktop\\MrNews\\NewsWebSite.Persistence\\NewsWebSite.Persistence.csproj",
-        "packagesPath": "C:\\Users\\20\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\20\\Desktop\\MrNews\\NewsWebSite.Persistence\\obj\\",
+        "projectPath": "C:\\Users\\Hadis\\Desktop\\MrNews\\MrNews\\NewsWebSite.Persistence\\NewsWebSite.Persistence.csproj",
+        "packagesPath": "C:\\Users\\Hadis\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Hadis\\Desktop\\MrNews\\MrNews\\NewsWebSite.Persistence\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\20\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Hadis\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -436,14 +440,14 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\20\\Desktop\\MrNews\\NewsWebSite.Application\\NewsWebSite.Application.csproj": {
-                "projectPath": "C:\\Users\\20\\Desktop\\MrNews\\NewsWebSite.Application\\NewsWebSite.Application.csproj"
+              "C:\\Users\\Hadis\\Desktop\\MrNews\\MrNews\\NewsWebSite.Application\\NewsWebSite.Application.csproj": {
+                "projectPath": "C:\\Users\\Hadis\\Desktop\\MrNews\\MrNews\\NewsWebSite.Application\\NewsWebSite.Application.csproj"
               },
-              "C:\\Users\\20\\Desktop\\MrNews\\NewsWebSite.Common\\NewsWebSite.Common.csproj": {
-                "projectPath": "C:\\Users\\20\\Desktop\\MrNews\\NewsWebSite.Common\\NewsWebSite.Common.csproj"
+              "C:\\Users\\Hadis\\Desktop\\MrNews\\MrNews\\NewsWebSite.Common\\NewsWebSite.Common.csproj": {
+                "projectPath": "C:\\Users\\Hadis\\Desktop\\MrNews\\MrNews\\NewsWebSite.Common\\NewsWebSite.Common.csproj"
               },
-              "C:\\Users\\20\\Desktop\\MrNews\\NewsWebSite.Domain\\NewsWebSite.Domain.csproj": {
-                "projectPath": "C:\\Users\\20\\Desktop\\MrNews\\NewsWebSite.Domain\\NewsWebSite.Domain.csproj"
+              "C:\\Users\\Hadis\\Desktop\\MrNews\\MrNews\\NewsWebSite.Domain\\NewsWebSite.Domain.csproj": {
+                "projectPath": "C:\\Users\\Hadis\\Desktop\\MrNews\\MrNews\\NewsWebSite.Domain\\NewsWebSite.Domain.csproj"
               }
             }
           }
@@ -452,6 +456,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -501,7 +510,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -510,7 +520,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.304\\RuntimeIdentifierGraph.json"
         }
       }
     }

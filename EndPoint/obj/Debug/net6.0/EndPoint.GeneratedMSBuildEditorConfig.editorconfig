@@ -5,108 +5,111 @@ build_property.UsingMicrosoftNETSdkWeb = true
 build_property.ProjectTypeGuids = 
 build_property.InvariantGlobalization = 
 build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = EndPoint
 build_property.RootNamespace = EndPoint
-build_property.ProjectDir = C:\Users\20\Desktop\MrNews\EndPoint\
+build_property.ProjectDir = C:\Users\Hadis\Desktop\MrNews\MrNews\EndPoint\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\20\Desktop\MrNews\EndPoint
+build_property.MSBuildProjectDirectory = C:\Users\Hadis\Desktop\MrNews\MrNews\EndPoint
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/20/Desktop/MrNews/EndPoint/Areas/Admin/Views/Categories/Create.cshtml]
+[C:/Users/Hadis/Desktop/MrNews/MrNews/EndPoint/Areas/Admin/Views/Categories/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2F0ZWdvcmllc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/20/Desktop/MrNews/EndPoint/Areas/Admin/Views/Categories/Index.cshtml]
+[C:/Users/Hadis/Desktop/MrNews/MrNews/EndPoint/Areas/Admin/Views/Categories/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2F0ZWdvcmllc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/20/Desktop/MrNews/EndPoint/Areas/Admin/Views/News/Index.cshtml]
+[C:/Users/Hadis/Desktop/MrNews/MrNews/EndPoint/Areas/Admin/Views/News/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTmV3c1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/20/Desktop/MrNews/EndPoint/Areas/Admin/Views/Shared/_Layout.cshtml]
+[C:/Users/Hadis/Desktop/MrNews/MrNews/EndPoint/Areas/Admin/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/20/Desktop/MrNews/EndPoint/Areas/Admin/Views/Users/Create.cshtml]
+[C:/Users/Hadis/Desktop/MrNews/MrNews/EndPoint/Areas/Admin/Views/Users/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVXNlcnNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/20/Desktop/MrNews/EndPoint/Areas/Admin/Views/Users/Index.cshtml]
+[C:/Users/Hadis/Desktop/MrNews/MrNews/EndPoint/Areas/Admin/Views/Users/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVXNlcnNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/20/Desktop/MrNews/EndPoint/Areas/Reporter/Views/News/Create.cshtml]
+[C:/Users/Hadis/Desktop/MrNews/MrNews/EndPoint/Areas/Reporter/Views/News/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUmVwb3J0ZXJcVmlld3NcTmV3c1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/20/Desktop/MrNews/EndPoint/Areas/Reporter/Views/News/Index.cshtml]
+[C:/Users/Hadis/Desktop/MrNews/MrNews/EndPoint/Areas/Reporter/Views/News/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUmVwb3J0ZXJcVmlld3NcTmV3c1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/20/Desktop/MrNews/EndPoint/Areas/Reporter/Views/Shared/_Layout.cshtml]
+[C:/Users/Hadis/Desktop/MrNews/MrNews/EndPoint/Areas/Reporter/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUmVwb3J0ZXJcVmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/20/Desktop/MrNews/EndPoint/Views/Authentication/Edit.cshtml]
+[C:/Users/Hadis/Desktop/MrNews/MrNews/EndPoint/Views/Authentication/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/20/Desktop/MrNews/EndPoint/Views/Authentication/Signin.cshtml]
+[C:/Users/Hadis/Desktop/MrNews/MrNews/EndPoint/Views/Authentication/Signin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cU2lnbmluLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/20/Desktop/MrNews/EndPoint/Views/Authentication/Signup.cshtml]
+[C:/Users/Hadis/Desktop/MrNews/MrNews/EndPoint/Views/Authentication/Signup.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cU2lnbnVwLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/20/Desktop/MrNews/EndPoint/Views/Home/Index.cshtml]
+[C:/Users/Hadis/Desktop/MrNews/MrNews/EndPoint/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/20/Desktop/MrNews/EndPoint/Views/Home/Privacy.cshtml]
+[C:/Users/Hadis/Desktop/MrNews/MrNews/EndPoint/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/20/Desktop/MrNews/EndPoint/Views/Home/SearchPeag.cshtml]
+[C:/Users/Hadis/Desktop/MrNews/MrNews/EndPoint/Views/Home/SearchPeag.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTZWFyY2hQZWFnLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/20/Desktop/MrNews/EndPoint/Views/Home/Service.cshtml]
+[C:/Users/Hadis/Desktop/MrNews/MrNews/EndPoint/Views/Home/Service.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTZXJ2aWNlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/20/Desktop/MrNews/EndPoint/Views/MrNews/Page.cshtml]
+[C:/Users/Hadis/Desktop/MrNews/MrNews/EndPoint/Views/MrNews/Page.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTXJOZXdzXFBhZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/20/Desktop/MrNews/EndPoint/Views/Shared/Error.cshtml]
+[C:/Users/Hadis/Desktop/MrNews/MrNews/EndPoint/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/20/Desktop/MrNews/EndPoint/Views/Shared/_HomeLayout.cshtml]
+[C:/Users/Hadis/Desktop/MrNews/MrNews/EndPoint/Views/Shared/_HomeLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Ib21lTGF5b3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/20/Desktop/MrNews/EndPoint/Views/Shared/_LogLayout.cshtml]
+[C:/Users/Hadis/Desktop/MrNews/MrNews/EndPoint/Views/Shared/_LogLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dMYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/20/Desktop/MrNews/EndPoint/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/Hadis/Desktop/MrNews/MrNews/EndPoint/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/20/Desktop/MrNews/EndPoint/Views/_ViewImports.cshtml]
+[C:/Users/Hadis/Desktop/MrNews/MrNews/EndPoint/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/20/Desktop/MrNews/EndPoint/Views/_ViewStart.cshtml]
+[C:/Users/Hadis/Desktop/MrNews/MrNews/EndPoint/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/20/Desktop/MrNews/EndPoint/Views/Shared/_Layout.cshtml]
+[C:/Users/Hadis/Desktop/MrNews/MrNews/EndPoint/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-jhfhwe49i8
