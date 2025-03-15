@@ -80,7 +80,7 @@ namespace EndPoint.Controllers
 
 
         //***********SignOut***********
-        [CustomAuthorize("کاربر")]
+        //[CustomAuthorize("کاربر")]
         public IActionResult SignOut(string ReturnUrl = "/")
         {
             HttpContext.Session.Remove("UserId");
