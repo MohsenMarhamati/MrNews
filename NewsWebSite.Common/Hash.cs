@@ -10,7 +10,7 @@ namespace NewsWebSite.Common
             var Hash = BitConverter.ToString(bytes).Replace("-", "").ToLower();
             return Hash;
         }
-
+         
         public static bool VerifyPassword(string PasswordHash, string PasswordSalt, string Password)
         {
             var bytes = Encoding.UTF8.GetBytes(Password + PasswordSalt);
