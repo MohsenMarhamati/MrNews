@@ -1,0 +1,589 @@
+﻿@using NewsWebSite.Application.Services.Authentication
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"]</title>
+
+    <link href="/Express_New/css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/Express_New/js/jquery.min.js"></script>
+    <!-- Custom Theme files -->
+    <script src="~/js/jquery.3.7.1.js"></script>
+    <link href="/Express_New/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- Custom Theme files -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Express News Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+      Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- for bootstrap working -->
+    <script type="text/javascript" src="/Express_New/js/bootstrap.js"></script>
+    <!-- //for bootstrap working -->
+    <!-- web-fonts -->
+    <script src="/Express_New/js/classie.js"></script>
+    <script src="/Express_New/js/uisearch.js"></script>
+    <script type="text/javascript" src="/Express_New/js/jquery.marquee.min.js"></script>
+
+    <script type="text/javascript" src="/Express_New/js/move-top.js"></script>
+    <script type="text/javascript" src="/Express_New/js/easing.js"></script>
+
+    <script src="~/Bootstrap/bootstrap.bundle.min.js"></script>
+    <link href="~/Bootstrap/bootstrap.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="~/AdminTemplate/app-assets/fonts/font-awesome/css/font-awesome.min.css">
+
+    <script src="~/lib/StylishPagination/jquery.simplePagination.js"></script>
+    <link rel="stylesheet" href="~/lib/StylishPagination/simplePagination.css" />
+
+    <link href="~/Sweetalert2/sweetalert2.min.css" rel="stylesheet">
+    <script src="~/Sweetalert2/sweetalert2.min.js"></script>
+
+    <script src="~/font-awesome/all.js"></script>
+    <link href="~/font-awesome/all.css" />
+
+    <!--/script-->
+    <script type="text/javascript">
+
+        $(document).ready(function() {
+            var defaults = {
+                wrapID: 'toTop', // fading element id
+                wrapHoverID: 'toTopHover', // fading element hover id
+                scrollSpeed: 1200,
+                easingType: 'linear'
+            };
+            $().UItoTop({ easingType: 'easeOutQuart' });
+        });
+    </script>
+    @RenderSection("Css", required:false)
+
+    <style>
+        .ticker {
+            white-space: nowrap;
+        }
+
+        .item {
+            display: inline-block;
+            cursor: pointer;
+            direction: rtl;
+            font-size: 10px;
+        }
+
+        .image-effect {
+            overflow: hidden;
+            -webkit-transition: 0.5s all;
+            -moz-transition: 0.5s all;
+            -o-transition: 0.5s all;
+            -ms-transition: 0.5s all
+        }
+
+            .image-effect:hover img {
+                transform: scale(1.2,1.2);
+                opacity: .2;
+                -webkit-transition: 0.5s all;
+                -moz-transition: 0.5s all;
+                -o-transition: 0.5s all;
+                -ms-transition: 0.5s all;
+            }
+
+        .container {
+            position: relative;
+        }
+
+        .topleft {
+            position: absolute;
+            top: 8px;
+            left: 16px;
+            font-size: 18px;
+        }
+
+        MyTarget {
+            width: 100%;
+            height: auto;
+            opacity: 0.3;
+        }
+    </style>
+
+</head>
+<body>
+    <!-- header-section-starts-here -->
+    <div class="header">
+        <div class="header-top" style="position:fixed; height:61px; width:100%; z-index:100;">
+            <div class="wrap">
+                <div class="top-menu row">
+                    <ul>
+                        <li><a href="/">صفحه اصلی</a></li>
+                        <li class="account-box">
+                            @if (Context.Session.GetString("UserId") != null)
+                            {
+                                <div class="nav-account d-block pl">
+                                    <span style="">
+                                        @if (Context.Session.GetString("UserImage") == null)
+                                        {
+                                            <img src="/SiteTemplate/assets/images/man.png" class="avator" style="height:50px;width:50px;">
+                                        }
+                                        else
+                                        {
+                                            <img src="/FileDacuments/GenerateFile?fileDocumentId=@Context.Session.GetString("UserImage")" class="avator" style="height:50px;width:50px;border-radius:50%;">
+                                        }
+                                    </span>
+                                    <span class="title-account" style="color:#fff;">@Context.Session.GetString("UserName")</span>
+
+                                    <a onclick="SignOut()">
+                                        <span class="pl-3 btn title-account">خروج</span>
+                                    </a>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="nav-account d-block pl">
+                                    <a onclick="GoToSingUp()">
+                                        <span class="p3 btn title-account">ثبت نام</span>
+                                    </a>
+                                    <a onclick="GoToLogIn()">
+                                        <span class="p3 btn title-account">ورود</span>
+                                    </a>
+                                </div>
+                            }
+                        </li>
+                    </ul>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <div class="header-bottom">
+            <div class="logo text-center" style="margin-top:50px;">
+                <a href="/"><img style="width:300px;height:150px;" src="/Express_New/images/logo_New.png" alt=""></a>
+            </div>
+            <div class="navigation">
+                <nav class="navbar navbar-default" role="navigation">
+                    <div class="wrap">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <span class="sr-only">تبدیل ناوبری</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+
+                        </div>
+                        <!--/.navbar-header-->
+
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                <li class="active"><a href="/">صفحه اصلی</a></li>
+                                @if (Context.Session.GetString("UserId") != null)
+                                {
+                                    <li><a onclick="GoToProfileEdit()">ویرایش پروفایل</a></li>
+                                }
+                                @{
+                                    if (Authentication.IsAdmin(Context.Session.GetString("UserRole")))
+                                    {
+                                        <li><a href="/Admin/Users">داشبورد مدیران</a></li>
+                                    }
+                                    if (Authentication.IsReporter(Context.Session.GetString("UserRole")))
+                                    {
+                                        <li><a href="/Reporter/News">داشبورد خبرنگاران</a></li>
+                                    }
+
+                                }
+                                <li class="dropdown">
+                                    <a href="business.html" class="dropdown-toggle" data-toggle="dropdown">گروه های خبری<b class="caret"></b></a>
+                                    <ul class="dropdown-menu multi-column columns-2">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <ul id="Categoriescolumn1" class="multi-column-dropdown">
+                                                </ul>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <ul id="Categoriescolumn2" class="multi-column-dropdown">
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </ul>
+                                </li>
+                                <div class="clearfix"></div>
+                            </ul>
+                            <div class="search">
+                                <!-- start search-->
+                                <div class="search-box">
+                                    <div id="sb-search" class="sb-search">
+                                        <form method="get" action="/Home/SearchPeag">
+                                            <input class="sb-search-input" placeholder="عبارت جستجو را وارد کنید..." type="search" name="q" id="search">
+                                            <input class="sb-search-submit" type="submit" value="">
+                                            <span class="sb-icon-search"> </span>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <!--/.navbar-collapse-->
+                    <!--/.navbar-->
+            </div>
+            </nav>
+        </div>
+    </div>
+    <!-- header-section-ends-here -->
+    <div class="wrap">
+        <div class="row move-text" dir=ltr>
+            <div class="col-md-2 breaking_news">
+                <h2>آخرین اخبار</h2>
+            </div>
+            <div class="col-md-10" style="margin-top:1%;">
+                <marquee id="LatestNews" direction="right" behavior="scroll" scrollamount="10" class="ticker" onmouseout="this.start()" onmouseover="this.stop()">
+                </marquee>
+            </div>
+        </div>
+    </div>
+    <!-- content-section-starts-here -->
+    <div class="main-body">
+        <div class="wrap">
+            <div style="float:right" class="col-md-8 side-bar content-right">
+                @RenderBody()
+            </div>
+            <div style="float:left" class="col-md-4 side-bar content-left">
+                <div class="first_half">
+
+                    <div class="list_vertical">
+                        <section class="accordation_menu">
+
+                            <div>
+                                <input id="label-1" name="lida" type="radio" checked />
+                                <label for="label-1" id="item1">
+                                    <i class="ferme"></i>
+                                    خبر های محبوب
+                                    <i class="icon-plus-sign i-left1"></i>
+                                    <i class="icon-minus-sign i-left2"></i>
+                                </label>
+                                <div class="content" id="a1">
+                                    <div class="scrollbar" id="style-2">
+                                        <div class="force-overflow">
+                                            <div id="MostPopular_List" class="popular-post-grids"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <input id="label-2" name="lida" type="radio" />
+                                <label for="label-2" id="item2">
+                                    <i class="icon-leaf" id="i2"></i>
+                                    گروه های خبری
+                                    <i class="icon-plus-sign i-left1"></i>
+                                    <i class="icon-minus-sign i-left2"></i>
+                                </label>
+                                <div class="content" id="a2">
+                                    <div class="scrollbar" id="style-2">
+                                        <div class="force-overflow">
+                                            <div id="Categories_list" class="popular-post-grids"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <input id="label-3" name="lida" type="radio" />
+                                <label for="label-3" id="item3">
+                                    <i class="icon-trophy" id="i3"></i>
+                                    آخرین نظرها
+                                    <i class="icon-plus-sign i-left1"></i>
+                                    <i class="icon-minus-sign i-left2"></i>
+                                </label>
+                                <div class="content" id="a3">
+                                    <div class="scrollbar" id="style-2">
+                                        <div class="force-overflow">
+                                            <div id="Comments_List" class="response"></div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </section>
+                    </div>
+                    <div id="NewsOnTheRight" class="side-bar-articles"></div>
+                </div>
+                @*<div class="secound_half">
+                    <div class="popular-news">
+                    <header>
+                    <h3 class="title-popular">اخبار</h3>
+                    </header>
+                    <div class="popular-grids">
+                    <div class="popular-grid">
+                    <a href="single.html"><img src="/Express_New/images/popular-4.jpg" alt="" /></a>
+                    <a class="title" href="single.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است</a>
+                    <p>On Aug 31, 2015 <a class="span_link" href="#"><span class="glyphicon glyphicon-comment"></span>0 </a><a class="span_link" href="#"><span class="glyphicon glyphicon-eye-open"></span>250 </a><a class="span_link" href="#"><span class="glyphicon glyphicon-thumbs-up"></span>68</a></p>
+                    </div>
+                    <div class="popular-grid">
+                    <a href="single.html"><img src="/Express_New/images/popular-1.jpg" alt="" /></a>
+                    <a class="title" href="single.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است</a>
+                    <p>On Mar 14, 2015 <a class="span_link" href="#"><span class="glyphicon glyphicon-comment"></span>0 </a><a class="span_link" href="#"><span class="glyphicon glyphicon-eye-open"></span>250 </a><a class="span_link" href="#"><span class="glyphicon glyphicon-thumbs-up"></span>68</a></p>
+                    </div>
+                    <div class="popular-grid">
+                    <iframe width="100%" frameborder="0" allowfullscreen></iframe>
+                    <a class="title" href="single.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است</a>
+                    <p>On Mar 14, 2015 <a class="span_link" href="#"><span class="glyphicon glyphicon-comment"></span>0 </a><a class="span_link" href="#"><span class="glyphicon glyphicon-eye-open"></span>250 </a><a class="span_link" href="#"><span class="glyphicon glyphicon-thumbs-up"></span>68</a></p>
+                    </div>
+                    <div class="popular-grid">
+                    <a href="single.html"><img src="/Express_New/images/popular-3.jpg" alt="" /></a>
+                    <a class="title" href="single.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است</a>
+                    <p>On Mar 14, 2015 <a class="span_link" href="#"><span class="glyphicon glyphicon-comment"></span>0 </a><a class="span_link" href="#"><span class="glyphicon glyphicon-eye-open"></span>250 </a><a class="span_link" href="#"><span class="glyphicon glyphicon-thumbs-up"></span>68</a></p>
+                    </div>
+                    </div>
+                    </div>
+                    </div>*@
+                <div class="clearfix"></div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <!-- content-section-ends-here -->
+    <!-- footer-section-starts-here -->
+    <div class="footer">
+        <div class="footer-top">
+            <div class="wrap">
+                <div class="col-md-3 col-xs-6 col-sm-4 footer-grid">
+                    <h4 class="footer-head">درباره ما</h4>
+                    <p>  ما در آقای خبر جدید ترین اخبار را از دیدگاهی جدید و تازه در اختیار کاربرانمان قرار می دهیم</p>
+                </div>
+                <div class="col-md-3 col-xs-12 footer-grid">
+                    <h4 class="footer-head">تماس با ما</h4>
+                    <address>
+                        <ul class="location">
+                            <li><span class="glyphicon glyphicon-earphone"></span></li>
+                            <li>0910-491-5616</li>
+                            <div class="clearfix"></div>
+                        </ul>
+                        <ul class="location">
+                            <li><span class="glyphicon glyphicon-envelope"></span></li>
+                            <li>mhmdmhsnmrhmty@@gmail.com</li>
+                            <div class="clearfix"></div>
+                        </ul>
+                    </address>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    @RenderSection("Modals",false)
+</body>
+<!-- search-scripts -->
+
+<script>
+    new UISearch( document.getElementById( 'sb-search' ) );
+</script>
+<!-- //search-scripts -->
+
+<script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $(".scroll").click(function(event){
+            event.preventDefault();
+            $('html,body').animate({scrollTop:$(this.hash).offset().top},900);
+        });
+    });
+</script>
+<script>
+    $('.marquee').marquee({ pauseOnHover: true });
+</script>
+
+<script>
+
+    function GoToLogIn(){
+        window.location.href = `/authentication/signin?ReturnUrl="${window.location.href}"`
+    }
+
+    function GoToSingUp(){
+        window.location.href = `/authentication/signup?ReturnUrl="${window.location.href}"`
+    }
+
+    function GoToProfileEdit(){
+        window.location.href = `/authentication/Edit?ReturnUrl="${window.location.href}"`
+    }
+
+    function SignOut(){
+        window.location.href = `/authentication/signout?ReturnUrl="${window.location.href}"`
+    }
+
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+
+
+    LatesCamment();
+    GetRightNews();
+    GetCategories();
+    GetMostPopular();
+    OupLoadLatestNews();
+    HeaderGetCategories();
+
+    function OupLoadLatestNews(){
+        let url = "/Home/LatestNews";
+        $.post(url,function(result){
+            if(result.isSuccess){
+                let html = "";
+                for(let i = 0; i < result.data.length; i++){
+                    html+=`<div class="item"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a class="title" href="/MrNews/Page?id=${result.data[i].id}"> « ${result.data[i].title} » </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </div>`;
+                }
+                $('#LatestNews').append(html);
+            }
+            else{
+
+            }
+        });
+    }
+
+
+    function GetCategories(){
+        let url = "/Home/GetCategories";
+        $.post(url, function(result){
+            if(result.isSuccess){
+                let html = "";
+                for(let i = 0; i < result.data.length; i++){
+                    html +=`
+                    <div class="popular-post-grid">
+                        <div class="post-img" style="height:100px;width:100px;overflow:hidden">
+                            <a target="_blank" href="/Home/Service?by=${result.data[i].name}">
+                                <img style="width:100%;height:100%;object-fit:cover;" src="/FileDacuments/GenerateFile?fileDocumentId=${result.data[i].fileDocumentId}"/>
+                            </a>
+                        </div>
+                        <div class="post-text">
+                            <a class="pp-title" target="_blank" href="/Home/Service?by=${result.data[i].name}">${result.data[i].title}</a>
+                            <p>تعداد خبر های این گروه خبری : ${result.data[i].number}</p>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    `;
+                }
+                $('#Categories_list').append(html);
+            }
+        })
+    }
+
+
+    function HeaderGetCategories(){
+        let url = "/Home/GetCategories";
+        $.post(url, function(result){
+            if(result.isSuccess){
+                let html = "";
+                for(let i = 0; i < result.data.length; i = i + 2){
+                    html +=`<li><a target="_blank" href="/Home/Service?by=${result.data[i].name}">${result.data[i].title}</a></li>`;
+                    if(i+2 < result.data.length) {html +=`<li class="divider"></li>`}
+                }
+                $('#Categoriescolumn1').append(html);
+
+                html = "";
+                for(let i = 1; i < result.data.length; i = i + 2){
+                    html +=`<li><a target="_blank" href="/Home/Service?by=${result.data[i].name}">${result.data[i].title}</a></li>`;
+                    if(i+2 < result.data.length) {html +=`<li class="divider"></li>`}
+                }
+                $('#Categoriescolumn2').append(html);
+            }
+        })
+    }
+
+
+    function LatesCamment(){
+        let url = "/Home/LatesCamment";
+        $.post(url, function(result){
+            if(result.isSuccess){
+                let html = "";
+                for(let i = 0; i < result.data.length; i++){
+                    html +=`
+                    <div class="media response-info">
+                        <div class="media-right response-text-right">`
+                            if (result.data[i].userImage != null ){
+                               html+=`<img style="border-radius:50%;text-align:center; height:50px; width:50px" class="media-object" src="/FileDacuments/GenerateFile?fileDocumentId=${result.data[i].userImage}">`;
+                            }
+                            else{
+                               html+=`<img class="media-object avator" src="/Express_New/images/no-image.png" style="text-align:center; height:100%; width:100%"/>`;
+                            }
+                            html +=`
+                            <h5>${result.data[i].userName}</h5>
+                        </div>
+                        <div class="media-body response-text-left">
+                            <p>${result.data[i].text}</p>
+                            <ul>
+                                <li>${result.data[i].insertTime}</li>
+                                <li><a href="/MrNews/Page?id=${result.data[i].newsId}">نمایش خبر</a></li>
+                            </ul>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    `;
+                }
+                $('#Comments_List').append(html);
+            }
+        });
+    }
+
+
+    function GetMostPopular(){
+        let url = "/Home/GetMostPopular";
+        $.post(url, function(result){
+            if(result.isSuccess){
+                let html = "";
+                for(let i = 0; i < result.data.length; i++){
+                    html +=`
+                    <div class="popular-post-grid">
+                        <div style="height:100px;width:100px;overflow:hidden" class="post-img">
+                            <a href="/MrNews/Page?id=${result.data[i].id}">
+                                <img style="width:100%;height:100%;object-fit:cover;" src="/FileDacuments/GenerateFile?fileDocumentId=${result.data[i].defaultImageId}" alt="نماییه ای برای این خبر وجود ندارد" />
+                            </a>
+                        </div>
+                        <div class="post-text media-body response-text-left"">
+                            <a class="pp-title" href="/MrNews/Page?id=${result.data[i].id}">${result.data[i].title}</a>
+                            <ul>
+                            <li>
+                                <span style="color:black;">${result.data[i].likeCount} نفر/</span>
+                                <span style="color:black; font-size:xx-large;">${result.data[i].rating}</span>
+                                <i class="fa-solid fa-star" aria-hidden="true" style="color:#ffd600;font-size:x-large;"></i>
+                            </li>
+                                <li>${result.data[i].insertTime}</li>
+                                <li><a href="/MrNews/Page?id=${result.data[i].id}">نمایش خبر</a></li>
+                            </ul>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    `;
+                }
+                $('#MostPopular_List').append(html);
+            }
+        })
+    }
+
+
+    function GetRightNews(){
+        let url = "/Home/GetNews8";
+        $.post(url, function(result){
+            let html = '';
+            for(var i = 0; i < result.data.length; i++){
+                html+=`
+                <div class="side-bar-article">
+                    <a href="/MrNews/Page?id=${result.data[i].id}">
+                        <img src="/FileDacuments/GenerateFile?fileDocumentId=${result.data[i].defaultImageId}"/>
+                    </a>
+                    <div class="side-bar-article-title">
+                        <a href="/MrNews/Page?id=${result.data[i].id}">  ${result.data[i].title}</a>
+                    </div>
+                </div>
+                `;
+            }
+            $('#NewsOnTheRight').append(html);
+        })
+    }
+
+</script>
+
+@RenderSection("Scripts", required:false)
+
+<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+<!---->
+</html>

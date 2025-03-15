@@ -1,0 +1,98 @@
+﻿@using System.Web
+@{
+    Layout = null;
+    string url = @ViewBag.url;
+}
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> @ViewData["Title"] </title>
+    <!-- font---------------------------------------->
+    <link rel="stylesheet" href="~/SiteTemplate/assets/css/vendor/font-awesome.min.css">
+    <link rel="stylesheet" href="~/SiteTemplate/assets/css/vendor/materialdesignicons.css">
+    <!-- plugin-------------------------------------->
+    <link rel="stylesheet" href="~/SiteTemplate/assets/css/vendor/bootstrap.css">
+    <link rel="stylesheet" href="~/SiteTemplate/assets/css/vendor/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/SiteTemplate/assets/css/vendor/noUISlider.min.css">
+    <!-- main-style---------------------------------->
+    <link rel="stylesheet" href="~/SiteTemplate/assets/css/main.css">
+
+
+    <!-- file js---------------------------------------------------->
+    <script src="~/SiteTemplate/assets/js/vendor/jquery-3.2.1.min.js"></script>
+    <script src="~/SiteTemplate/assets/js/vendor/bootstrap.js"></script>
+    <!-- plugin----------------------------------------------------->
+    <script src="~/SiteTemplate/assets/js/vendor/owl.carousel.min.js"></script>
+    <script src="~/SiteTemplate/assets/js/vendor/jquery.countdown.js"></script>
+    <script src="~/SiteTemplate/assets/js/vendor/ResizeSensor.min.js"></script>
+    <script src="~/SiteTemplate/assets/js/vendor/theia-sticky-sidebar.min.js"></script>
+    <script src="~/SiteTemplate/assets/js/vendor/wNumb.js"></script>
+    <script src="~/SiteTemplate/assets/js/vendor/nouislider.min.js"></script>
+    <!-- main js---------------------------------------------------->
+    <script src="~/SiteTemplate/assets/js/main.js"></script>
+    <link href="~/Sweetalert2/sweetalert2.min.css" rel="stylesheet">
+    <script src="~/Sweetalert2/sweetalert2.min.js"></script>
+</head>
+<body>
+
+    <!-- login----------------------------------->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg">
+                <section class="page-account-box">
+                    <div class="col-lg-6 col-md-6 col-xs-12 mx-auto">
+                        <div class="ds-userlogin text-center">
+                            <a href="/"><img style="width:300px;height:150px;" src="/Express_New/images/logo_New.png" alt=""></a>
+                            <div class="account-box">
+                                <div class="account-box-headline">
+                                    <a href='/authentication/signin?ReturnUrl="@url.Replace("\"", "")"' class="login-ds ds">
+                                        <span class="title">ورود</span>
+                                        <span class="sub-title">به آقای خبر</span>
+                                    </a>
+                                    <a href='/authentication/signup?ReturnUrl="@url.Replace("\"", "")"' class="register-ds ds">
+                                        <span class="title">ثبت نام</span>
+                                        <span class="sub-title">در آقای خبر</span>
+                                    </a>
+                                </div>
+                                @RenderBody()
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <!-- login----------------------------------->
+    <!-- scroll_Progress------------------------->
+    <div class="progress-wrap">
+        <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+        </svg>
+    </div>
+
+</body>
+<!-- file js---------------------------------------------------->
+<script src="~/SiteTemplate/assets/js/vendor/jquery-3.2.1.min.js"></script>
+<script src="~/SiteTemplate/assets/js/vendor/bootstrap.js"></script>
+<!-- plugin----------------------------------------------------->
+<script src="~/SiteTemplate/assets/js/vendor/owl.carousel.min.js"></script>
+<script src="~/SiteTemplate/assets/js/vendor/jquery.countdown.js"></script>
+<script src="~/SiteTemplate/assets/js/vendor/ResizeSensor.min.js"></script>
+<script src="~/SiteTemplate/assets/js/vendor/theia-sticky-sidebar.min.js"></script>
+<script src="~/SiteTemplate/assets/js/vendor/wNumb.js"></script>
+<script src="~/SiteTemplate/assets/js/vendor/nouislider.min.js"></script>
+<!-- main js---------------------------------------------------->
+<script src="~/SiteTemplate/assets/js/main.js"></script>
+
+
+<link href="~/Sweetalert2/sweetalert2.min.css" rel="stylesheet" />
+<script src="~/Sweetalert2/sweetalert2.min.js"></script>
+    
+
+<!-- scroll_Progress------------------------->
+@RenderSection("Scripts", required:false)
+</html>
+
