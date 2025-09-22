@@ -67,27 +67,27 @@
                                         </div>
                                         <div class="form-account-title">
                                             <label for="email-phone">نام نام خانوادگی</label>
-                                            <input type="text" class="number-email-input" id="Edit_FullName" value="@Context.Session.GetString("UserName")">
+                                            <input type="text" class="number-email-input" id="Edit_FullName" value="@Context.Session.GetString("UserName")" onkeydown="CheckKeyPress(this,event)">
                                         </div>
                                         <div class="form-account-title">
                                             <label for="email-phone">ایمیل</label>
-                                            <input type="email" class="number-email-input" id="Edit_Email" value="@Context.Session.GetString("UserEmail")">
+                                            <input type="email" class="number-email-input" id="Edit_Email" value="@Context.Session.GetString("UserEmail")" onkeydown="CheckKeyPress(this,event)">
                                         </div>
                                         <div class="form-account-title">
                                             <label for="password">رمز عبور فعلی را وارد کنید(الزامی)</label>
-                                            <input type="password" class="password-input" id="Password">
+                                            <input type="password" class="password-input" id="Password" onkeydown="CheckKeyPress(this,event)">
                                         </div>
                                         <div class="form-account-title">
                                             <label for="password">رمز عبور جدید را وارد کنید</label>
-                                            <input type="password" class="password-input" id="Edit_Password">
+                                            <input type="password" class="password-input" id="Edit_Password" onkeydown="CheckKeyPress(this,event)">
                                         </div>
                                         <div class="form-account-title">
                                             <label for="password">تکرار رمز عبور جدید را وارد کنید</label>
-                                            <input type="password" class="password-input" id="Edit_RePassword">
+                                            <input type="password" class="password-input" id="Edit_RePassword" onkeydown="CheckKeyPress(this,event)">
                                         </div>
                                         <div class="form-row-account">
                                             <a onclick="EditUser()" style="color:#fff;" class="btn btn-register btn-info">ویرایش</a>
-                                            <a href=@url class="btn btn-register btn-danger">بازگشت</a>
+                                            <a href=@url.Replace("\"", "") class="btn btn-register btn-danger">بازگشت</a>
                                         </div>
                                     </div>
                                 </div>
@@ -184,5 +184,33 @@
     function UploadImage(){
         $('#PersonImage').attr('src', URL.createObjectURL($('#Edit_Image').get(0).files[0]));
     }
+
+    function CheckKeyPress(el, e) {
+            if (e.keyCode == 13) {
+                debugger
+                switch( $(el).prop('id') ){
+                    case "Edit_FullName" : {
+                        $("#Edit_Email").focus();
+                        break;
+                    }
+                    case "Edit_Email" : {
+                        $("#Password").focus();
+                        break;
+                    }
+                    case "Password" : {
+                        $("#Edit_Password").focus();
+                        break;
+                    }
+                    case "Edit_Password" : {
+                        $("#Edit_RePassword").focus();
+                        break;
+                    }
+                    case "Edit_RePassword" : {
+                        EditUser();
+                        break;
+                    }
+                }
+            }
+        }
 </script>
 </html>

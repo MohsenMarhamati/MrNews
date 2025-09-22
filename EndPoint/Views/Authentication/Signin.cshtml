@@ -9,11 +9,11 @@
         <h4>ورود به حساب کاربری</h4>
         <div class="form-account-title">
             <label for="email-phone">ایمیل  </label>
-            <input type="text" class="number-email-input" id="Email" name="email-account">
+            <input type="text" class="number-email-input" id="Email" name="email-account" onkeydown="CheckKeyPress(this,event)">
         </div>
         <div class="form-account-title">
             <label for="password">رمز عبور</label>
-            <input type="password" class="password-input" id="Password">
+            <input type="password" class="password-input" id="Password" onkeydown="CheckKeyPress(this,event)">
         </div>
         <div class="form-auth-row">
             <label for="#" class="ui-checkbox mt-1">
@@ -31,6 +31,8 @@
 <script>
     $('.ds').removeClass("active")
     $('.login-ds').addClass("active")
+
+
     function Login() {
         var postData = {
             'Email': $("#Email").val(),
@@ -47,6 +49,23 @@
              }
         });
     }
+
+
+    function CheckKeyPress(el, e) {
+            if (e.keyCode == 13) {
+                debugger
+                switch( $(el).prop('id') ){
+                    case "Email" : {
+                        $("#Password").focus();
+                        break;
+                    }
+                    case "Password" : {
+                        Login();
+                        break;
+                    }
+                }
+            }
+        }
 </script>
 }
 
