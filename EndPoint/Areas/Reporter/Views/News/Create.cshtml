@@ -194,6 +194,14 @@
             'FileDocuments': ImagesId,
         };
 
+        //var postData = {};
+        //postData.Title = $("#Title").val();
+        //postData.Headline = $("#Headline").val();
+        //postData.Body = $("#Body").val();
+        //postData.CategoryId = $("#Category").val();
+        //postData.DefaultImageId = DifaultImageId;
+        //postData.FileDocuments = ImagesId;
+
         var url = "/Reporter/News/Create"
         $.post(url,{request:postData},function(result){
             if(result.isSuccess){
