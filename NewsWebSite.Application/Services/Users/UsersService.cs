@@ -25,10 +25,10 @@ namespace NewsWebSite.Application.Services.Users
         public ReslutGetUserDto GetUsers(RequestGetUserDto Request)
         {
             int rpweCount = 0;
-            var users = _Context.Users;
-            var usersList = users
+            var users = _Context.Users
                 .Include(u => u.UserInRoles)
                 .ThenInclude(r => r.Role)
+                .Where(u => u.IsRemoved == false)
                 .ToPaged(Request.page, Request.pagesize, out rpweCount)
                 .Select(p => new GetUserDto
                 {
@@ -40,12 +40,11 @@ namespace NewsWebSite.Application.Services.Users
                     FileDocumentId = p.FileDocumentId,
                     UserRoles = p.UserInRoles.Select(r => new RolesDto { Title = r.Role.Title, Id = r.RoleId }).ToList(),
                 }).ToList();
-            var count = users.Count();
 
             return new ReslutGetUserDto
             {
-                UsersList = usersList,
-                RecordCount = count,
+                UsersList = users,
+                RecordCount = rpweCount,
                 Rowe = rpweCount,
             };
         }

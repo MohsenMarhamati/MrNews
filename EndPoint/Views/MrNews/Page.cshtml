@@ -20,7 +20,6 @@
         <ol class="breadcrumb col-xl-12 col-lg-12 col-md-12 mb-1">
             <li><a href="/">صفحه اصلی</a></li>
             <li><a id="CategoryTitle"></a></li>
-            <li class="active"><a href="/">خبر</a></li>
         </ol>
     </header>
     <div id="100" class="col-xl-12 col-lg-12 col-md-12 mb-12 row">
@@ -272,7 +271,21 @@
                 });
             }
             else{
-                swal.fire('هشدار',result.message,'warning');
+                swal.fire({
+                titel: 'هشدار',
+                text: result.message,
+                icon: 'info',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#84754e',
+                confirmButtonText: 'ورود به حساب کاربری',
+                cancelButtonText: 'بعدا'
+            })
+            .then((result) => {
+                if(result.value) {
+                    window.location.href = `/authentication/signin?ReturnUrl="${window.location.href}"`;
+                 }
+            });
             }
         });
     }
@@ -313,7 +326,21 @@
                 });
             }
             else{
-                swal.fire('هشدار',result.message,'warning');
+                swal.fire({
+                titel: 'هشدار',
+                text: result.message,
+                icon: 'info',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#84754e',
+                confirmButtonText: 'ورود به حساب کاربری',
+                cancelButtonText: 'بعدا'
+            })
+            .then((result) => {
+                if(result.value) {
+                    window.location.href = `/authentication/signin?ReturnUrl="${window.location.href}"`;
+                 }
+            });
             }
         });
     }

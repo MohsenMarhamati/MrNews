@@ -126,7 +126,7 @@ namespace NewsWebSite.Application.Services.Comment
 
                 if (request.UserId == 0 || request.UserId == null)
                 {
-                    return new ResultDto { IsSuccess = false, Message = "برای ورود به حساب باید به حساب کاربری خود وارد شوید" };
+                    return new ResultDto { IsSuccess = false, Message = "برای ثبت نظر باید به حساب کاربری خود وارد شوید" };
                 }
 
                 if (request.Text == null)
