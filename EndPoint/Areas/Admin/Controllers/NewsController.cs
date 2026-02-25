@@ -8,7 +8,7 @@ namespace EndPoint.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [CustomAuthorize("مدیر")]
-    public class NewsController : Controller
+    public class NewsController : Controller 
     {
         private INewsService _NewsService;
 

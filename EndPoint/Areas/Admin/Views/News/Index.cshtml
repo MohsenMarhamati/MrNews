@@ -317,8 +317,8 @@
         function ReadGetImage(id){
             var img = "";
             img += `<div id="${id}" style="width:210px; height:210px; float:left; position:relative; margin-left:1%">
-                <img onclick="/FileDacuments/GenerateFile?fileDocumentId=${id}" target="_blank"src="/FileDacuments/GenerateFile?fileDocumentId=${id}"
-            class="img-thumbnail rounded mx-auto"style="text-align: center;height:100%;width:100%"></div>`;
+                        <img onclick="/FileDacuments/GenerateFile?fileDocumentId=${id}" target="_blank"src="/FileDacuments/GenerateFile?fileDocumentId=${id}" class="img-thumbnail rounded mx-auto"style="text-align: center;height:100%;width:100%">
+                    </div>`;
             $('#modal_WiewNews_FileDocuments').append(img);
         }
 
